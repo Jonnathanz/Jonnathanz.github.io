@@ -1,0 +1,289 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jogo da Velha</title>
+        <link rel="stylesheet" href="jVelhaStyle.css">
+    </head>
+    <body>
+        <div id="main">
+            <div id="config">
+               <div id= "config1">
+                    <button id="bplacar">Reiniciar Placar</button>
+                    <button id="bjogo">Reiniciar Jogo</button>
+               </div>
+               <div id= "config2">
+                    <div>
+                        <p class="bprim">Player 1:</p>
+                        <button class="b1">1°</button>
+                        <div>
+                            <button id= "bpecaX">X</button>
+                            <button id= "bpecaO">O</button>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="bprim">Player 2:</p>
+                        <button class="b1">1°</button>
+                        
+                        <p id="ep2">&nbsp;</p>     
+                    </div>
+               </div>
+            </div>
+            <div id="tab">
+                <div>
+                    <button id="tab00">&emsp;</button>
+                    <button id="tab01">&emsp;</button>
+                    <button id="tab02">&emsp;</button>
+                    <button id="tab10">&emsp;</button>
+                    <button id="tab11">&emsp;</button>
+                    <button id="tab12">&emsp;</button>
+                    <button id="tab20">&emsp;</button>
+                    <button id="tab21">&emsp;</button>
+                    <button id="tab22">&emsp;</button>
+                </div>
+            </div>
+            <div id="plac">
+                <p>PLACAR: &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <span id="result"><span></p>
+                    <p>Player 1: <span id="plac1">0</span> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Player 2: <span id="plac2">0</span> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Empate: <span id="plac3">0</span></p>
+            </div>
+        </div>
+
+        <script>
+            //funcoes
+            function iniciar() {
+                rodada = 1;
+
+                for(var i=0; i < btab.length; i++) {
+                    btab[i].disabled = false;
+                }
+            }
+            function resultado() {
+                let venceu = false;
+
+                if((btab[0].textContent === btab[1].textContent &&  btab[0].textContent === btab[2].textContent && btab[0].textContent != " ")){
+                    venceu = true;
+                } else if((btab[3].textContent === btab[4].textContent &&  btab[3].textContent === btab[5].textContent && btab[3].textContent != " ")){
+                    venceu = true;
+                } else if((btab[6].textContent === btab[7].textContent &&  btab[6].textContent === btab[8].textContent && btab[6].textContent != " ")){
+                    venceu = true;
+                } else if((btab[0].textContent === btab[3].textContent &&  btab[0].textContent === btab[6].textContent && btab[0].textContent != " ")){
+                    venceu = true;
+                } else if((btab[1].textContent === btab[4].textContent &&  btab[1].textContent === btab[7].textContent && btab[1].textContent != " ")){
+                    venceu = true;
+                } else if((btab[1].textContent === btab[4].textContent &&  btab[1].textContent === btab[7].textContent && btab[1].textContent != " ")){
+                    venceu = true;
+                } else if((btab[2].textContent === btab[5].textContent &&  btab[2].textContent === btab[8].textContent && btab[2].textContent != " ")){
+                    venceu = true;
+                } else if((btab[0].textContent === btab[4].textContent &&  btab[0].textContent === btab[8].textContent && btab[4].textContent != " ")){
+                    venceu = true;
+                } else if((btab[2].textContent === btab[4].textContent &&  btab[2].textContent === btab[6].textContent && btab[4].textContent != " ")){
+                    venceu = true;
+                }
+
+                if(venceu === true) {
+                    for(var i=0; i < btab.length; i++) {
+                        btab[i].disabled = true;
+                    }
+
+                    if ((player1.vez + rodada)%2 === 0) {
+                        dResult.textContent = "VITÓRIA PLAYER 1";
+                        dplac1.textContent = 1 + parseInt(dplac1.textContent);
+                    } else {
+                        dResult.textContent = "VITÓRIA PLAYER 2";
+                        dplac2.textContent = 1 + parseInt(dplac2.textContent);
+                    }
+
+                } else if(rodada === 9) {
+                    dResult.textContent = "EMPATE";
+                    dplac3.textContent = 1 + parseInt(dplac3.textContent);
+                }
+            }
+
+            function eventbplacar(){
+                dplac1.textContent = 0;
+                dplac2.textContent = 0;
+                dplac3.textContent = 0;
+
+                dResult.textContent = "";
+            }
+            function eventbjogo(){
+                var rodada = 1;
+
+                player1.vez = null;
+                player1.peca = null;
+                player2.vez = null;
+                player2.peca = null;
+
+                bp1.disabled = false;
+                bp1.style.color = "black";
+                bp1.textContent = "1°";
+                bp1.style.backgroundColor = "rgb(230, 230, 230)";
+                bp2.disabled = false;
+                bp2.style.color = "black";
+                bp2.textContent = "1°";
+                bp2.style.backgroundColor = "rgb(230, 230, 230)";
+
+                dp2.textContent = " ";
+
+                bpecaX.textContent = "X";
+                bpecaX.style.color = "blue";
+                bpecaX.style.backgroundColor = "rgb(230, 230, 230)";
+                bpecaX.disabled = false;
+                bpecaO.textContent = "O";
+                bpecaO.style.color = "red";
+                bpecaO.style.backgroundColor = "rgb(230, 230, 230)";
+                bpecaO.disabled = false;
+
+                dResult.textContent = "";
+
+                for(var i = 0; i < btab.length; i++) {
+                    btab[i].disabled = true;
+                    btab[i].style.backgroundColor = "rgb(4, 160, 30)";
+                    btab[i].textContent = " ";
+                }
+            }
+
+            function eventbpeca(){
+                if (this.textContent === "X") {
+                    player1.peca = "X";
+                    player2.peca = "O";
+
+                    dp2.textContent = "O";
+                    dp2.style.color = "red";
+
+                    bpecaO.textContent = ".";
+                    bpecaO.style.color = "grey";
+                    bpecaO.style.backgroundColor = "grey";
+                } else {
+                    player1.peca = "O";
+                    player2.peca = "X";
+
+                    dp2.textContent = "X";
+                    dp2.style.color = "blue";
+
+                    bpecaX.textContent = ".";
+                    bpecaX.style.color = "grey";
+                    bpecaX.style.backgroundColor = "grey";
+                }
+
+                bpecaO.disabled = true;
+                bpecaX.disabled = true;
+
+                if(player1.vez != null) {
+                    iniciar();
+                }
+            }
+
+            function eventbp1(){
+                player1.vez = 1;
+                player2.vez = 2;
+
+                bp2.textContent = "2°";
+                bp2.disabled = true;
+                bp1.disabled = true;
+                
+                bp1.style.color= "yellow";
+                bp1.style.backgroundColor= "black";
+                bp2.style.color= "yellow";
+                bp2.style.backgroundColor= "black";
+
+                if(player1.peca != null) {
+                    iniciar();
+                }
+            }
+            function eventbp2(){
+                player1.vez = 2;
+                player2.vez = 1;
+
+                bp1.textContent = "2°"
+                bp1.disabled = true;
+                bp2.disabled = true;
+
+                bp1.style.color= "yellow";
+                bp1.style.backgroundColor= "black";
+                bp2.style.color= "yellow";
+                bp2.style.backgroundColor= "black";
+
+                if(player1.peca != null) {
+                    iniciar();
+                }
+            }
+
+            function eventtab(){
+                if ((player1.vez + rodada)%2 === 0) {
+                    this.textContent = player1.peca;
+                } else {
+                    this.textContent = player2.peca;
+                }
+
+                this.style.color = this.textContent === "X" ? "blue" : "red";
+                this.disabled = true;
+                this.style.backgroundColor = "white";
+
+                resultado();
+                rodada++;
+            }        
+            
+            function eventHover() {
+                let a = getComputedStyle(this).color;
+                this.style.color = getComputedStyle(this).backgroundColor;
+                this.style.backgroundColor = a;
+            }
+
+            //Variaveis do sistema
+            var rodada = 1;
+
+            var player1 = {
+                vez : null,
+                peca : null,
+            };
+            var player2 = {
+                vez : null,
+                peca : null,
+            };
+
+            //Display placar
+            var dp2 = document.querySelector("#ep2");
+            var dResult = document.querySelector("#result");
+
+            var dplac1 = document.querySelector("#plac1");
+            var dplac2 = document.querySelector("#plac2");
+            var dplac3 = document.querySelector("#plac3");
+
+            //Botões
+            var bplacar = document.querySelector("#bplacar");
+            var bjogo = document.querySelector("#bjogo");
+            bplacar.addEventListener("click", eventbplacar);
+            bjogo.addEventListener("click", eventbjogo);
+
+            var bpecaX = document.querySelector("#bpecaX");
+            var bpecaO = document.querySelector("#bpecaO");
+            bpecaX.addEventListener("click", eventbpeca);
+            bpecaX.addEventListener("mouseenter", eventHover);
+            bpecaX.addEventListener("mouseleave", eventHover);
+            bpecaX.addEventListener("click", eventHover);
+            bpecaO.addEventListener("click", eventbpeca);
+            bpecaO.addEventListener("mouseenter", eventHover);
+            bpecaO.addEventListener("mouseleave", eventHover);
+            bpecaO.addEventListener("click", eventHover);
+            
+            var [bp1, bp2] = document.querySelectorAll(".b1");
+            bp1.addEventListener("mouseenter", eventHover);
+            bp1.addEventListener("mouseleave", eventHover);
+            bp1.addEventListener("click", eventHover);
+            bp1.addEventListener("click", eventbp1);
+            bp2.addEventListener("mouseenter", eventHover);
+            bp2.addEventListener("mouseleave", eventHover);
+            bp2.addEventListener("click", eventHover);
+            bp2.addEventListener("click", eventbp2);
+
+            var btab = document.querySelectorAll("#tab button");
+            for(var i=0; i < btab.length; i++) {
+                btab[i].addEventListener("mouseenter", function() {this.style.backgroundColor = "white";});
+                btab[i].addEventListener("mouseleave", function() {this.style.backgroundColor = "rgb(4, 160, 30)";});
+                btab[i].addEventListener("click", eventtab);
+                btab[i].disabled = true;
+            }
+        </script>
+    </body>
+</html>

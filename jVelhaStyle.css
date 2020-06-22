@@ -1,0 +1,187 @@
+#main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: perspective(1px) translateY(-50%) translateX(-50%);
+
+    background-color: black;
+    height: 600px;
+    width: 600px;
+
+    padding: 20px;    
+    border-radius: 30px;
+}
+
+#config {
+    height: 18%;
+    margin-bottom: 1%;
+    background-color: green;
+    padding: 1%;
+
+    border-radius: 20px;
+    display: flex;
+}
+#tab{
+    height: 60%;
+    margin-bottom: 1%;
+    background-color: green;
+    
+    border-radius: 20px;
+}
+#plac {
+    height: 17%;
+
+    background-color: green;
+    border-radius: 19px;
+    padding: 1%
+}
+
+#config1 {
+    position: relative;
+
+    height: 100%;
+    width: 40%;
+    border-right: 2px solid rgb(0, 0, 0);
+    /*background-color: grey;*/
+
+}
+#config1 button {
+    position: relative;
+    top: 30%;
+    left: 50%;
+    transform: perspective(1px) translateY(-50%) translateX(-50%);
+
+    height: 30%;
+    width: 80%;
+
+    margin-bottom: 5%;
+    border-radius: 20px;
+
+    display: block;
+}
+#config1 button:hover {
+    background-color : black;
+    color: white;
+}
+
+#config2 {
+    position: relative;
+
+    height: 100%;
+    width: 59%;
+
+    margin-left: 1%;
+    /*background-color: red;*/
+
+    display: flex;
+}
+#config2 > div {
+    position: relative;
+    
+    height: 100%;
+    width: 40%;
+
+    padding-left: 20px;
+    padding-right: 20px;
+}
+#config2 > div:first-child {
+    border-right: 1px solid black;
+}
+.bprim {
+    display: inline-block;
+    font-size: 1.2em;
+}
+.b1 {
+    background-color : rgb(230, 230, 230);
+}
+
+#config2 > div > button {
+    width: 50px;
+    font-size: 1.2em;
+}
+#config2 > div > div {
+    position: relative;
+    height: 3em;
+}
+
+#bpecaX {
+    font-size: 1.8em;
+    color: blue;
+    margin-left: 35px;
+    
+    height: 1.5em;
+    width: 1.5em;
+    border-radius: 10px;
+
+    background-color: rgb(230, 230, 230);
+}
+#bpecaO {
+    font-size: 1.8em;
+    color: red;
+    
+    height: 1.5em;
+    width: 1.5em;
+    border-radius: 10px;
+
+    margin-bottom: 10px;
+
+    background-color: rgb(230, 230, 230);
+}
+#ep2 {
+    position: relative;
+    margin: auto;
+    margin-right: 12px;
+
+    text-align: center;
+
+    border-radius: 10px;
+    width: 1.2em;
+
+    font-size: 2.2em;
+
+    background-color: rgb(230, 230, 230);
+}
+
+#tab > div {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: perspective(1px) translateY(-50%) translateX(-50%);
+
+    height: 330px;
+    width: 340px;
+    padding: 15px;
+
+    /*background-color: red;*/
+}
+#tab > div button {
+    display: inline-block;
+
+    width: 100px;
+    height: 100px;
+
+    margin: 3.68px;
+
+    border-radius: 20%;
+    
+    font-size: 4em;
+
+    background-color: rgb(4, 160, 30);
+}
+
+#plac p:first-child {
+    position: relative;
+    left: 47px;
+
+    font-size: 1.2em;
+}
+
+#plac p:nth-child(2) {
+    text-align: center;
+    font-size: 1.2em;
+}
+
+#plac span {
+    color: white;
+}
+
